@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: #F4F2EE;
+}
+
+@font-face {
+    font-family: 'Pacifico';
+    src: url("../public/fonts/Pacifico-Regular.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  

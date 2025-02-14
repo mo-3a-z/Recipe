@@ -1,0 +1,61 @@
+<h1 class="mb-5 font-[Pacifico] text-[36px] font-bold text-[#EE8D29]">Learn, Cook, Eat <span class="text-[#DC5C45]">Your
+        Food</span></h1>
+
+
+
+<ul
+    class=" sm:flex hidden mt-8 flex-wrap gap-4  font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
+
+    <ul
+        class="sm:flex hidden mt-8 flex-wrap gap-4 font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
+        @if (categories) {
+        <li class="me-2">
+            <a routerLink="/category/all" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                class="font-[cursive] inline-block catLink px-4 py-2 border transition-all hover:shadow-xl shadow duration-300 rounded-full hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300 active">
+                All
+            </a>
+        </li>
+        @for (c of categories; track $index) {
+        <li class="me-2">
+            <a [routerLink]="['/category', c.strCategory]" routerLinkActive="active"
+                class="font-[cursive] inline-block catLink px-4 py-2 border transition-all hover:shadow-xl shadow duration-300 rounded-full hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">
+                {{ c.strCategory }}
+            </a>
+        </li>
+        }
+        }
+    </ul>
+
+
+
+</ul>
+
+
+
+
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-14 mb-4 mt-20">
+
+    @if (meals) {
+
+    @for (m of meals; track $index) {
+    <div
+        class=" meal text-center hover:shadow-xl group  hover:scale-105 duration-300 transition-all bg-white p-12 pb-4  rounded-[35px]">
+        <img [src]="m.strMealThumb"
+            class="w-full group-hover:rotate-[360deg] duration-700 transition-all rounded-full drop-shadow-xl  -translate-y-20  shadow-2xl"
+            alt="">
+        <h3 class="font-semibold -mt-12 font-Pacifico tracking-wider font-[cursive] text-xl">
+            {{ m.strMeal.split(' ').slice(0, 2).join(' ') }}
+        </h3>
+        <h5 class="flex justify-center items-center gap-2 text-emerald-600 font-[cursive] "> <i
+                class="fa-solid fa-earth-europe"></i> {{m.strArea}}</h5>
+        <button [routerLink]="['/mealdetails', m.idMeal]" class="text-white bg-gradient-to-r mt-4 bg-emerald-600 font-[cursive] 
+                               hover:bg-emerald-600 font-semibold hover:shadow-lg hover:scale-105 
+                               transition-all duration-300 px-4 sm:px-6 md:px-8 py-2 rounded-full 
+                               text-sm sm:text-base w-full sm:w-auto max-w-full flex justify-center">
+            View Recipe
+        </button>
+    </div>
+    }
+    }
+</div>
